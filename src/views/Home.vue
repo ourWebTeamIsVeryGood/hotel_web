@@ -28,7 +28,7 @@ export default {
 				path:"/check"
 			})
 		}
-  }
+  	}
 }
 </script>
 <style lang="scss" scoped>
