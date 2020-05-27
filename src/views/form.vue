@@ -2,17 +2,17 @@
 	<div class="formId">
 		<header>
 			<gohome :width="60" :height="60"></gohome>
-			<el-button type="danger" @click="isKeyBoard=false">关闭键盘</el-button>
+			<el-button type="danger" v-show="isKeyBoard" @click="isKeyBoard=false">关闭键盘</el-button>
 		</header>
 		<el-form ref="form" label-width="150px" :label-position="labelPosition" :model="form" :rules="rules">
 			<el-form-item prop="name" label="姓名">
 				<el-input @focus="keyboard('name')" v-model="form.name" placeholder="请输入姓名"></el-input>
 			</el-form-item>
 			<el-form-item prop="number" label="手机号">
-				<el-input @focus="keyboard('number')" v-model.number="form.number" placeholder="请输入手机号"></el-input>
+				<el-input @focus="keyboard('number')" type="number" v-model="form.number" placeholder="请输入手机号"></el-input>
 			</el-form-item>
 			<el-form-item prop="cardNumber" label="身份证号">
-				<el-input @focus="keyboard('cardNumber')" v-model.number="form.cardNumber" placeholder="请输入身份证号"></el-input>
+				<el-input @focus="keyboard('cardNumber')" v-model="form.cardNumber" placeholder="请输入身份证号"></el-input>
 			</el-form-item>
 			<el-form-item prop="region" label="选择房型">
 				<el-select style="width:100%" v-model="form.region" placeholder="请选择房型">
@@ -93,9 +93,15 @@ export default {
       console.log(value);
     },
     onSubmit() {
+		let money=1000;
 		this.$refs["form"].validate((valid)=>{
 			if(valid){
-
+				this.$router.push({
+					name: 'selectPay',
+					params: {
+						money: money
+					}
+				})
 			}
 		})
 	},

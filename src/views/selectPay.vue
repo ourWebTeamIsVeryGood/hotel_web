@@ -16,11 +16,25 @@
 				</div>
 			</div>
 		</div>
+		<el-dialog
+			:visible.sync="dialogVisible"
+			width="80%"
+			:show-close="false">
+			<span>这是一段信息</span>
+		</el-dialog>
 	</div>
 </template>
 <script>
 export default{
-    name:'selectPay',
+	name:'selectPay',
+	data(){
+		return{
+			dialogVisible:true
+		}
+	},
+	created(){
+		console.log(this.$route.params)
+	}
 }
 </script>
 <style lang="scss" scoped>

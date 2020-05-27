@@ -59,5 +59,20 @@
 			font-size: 20px;
 		}
 	}
-	
+	.el-message-box{
+		.el-message-box__message{
+			font-size: 32px;
+			
+		}
+		.el-message-box__content{
+			height: 50px;
+			line-height: 50px;
+		}
+		.el-message-box__status,.el-icon-warning{
+			font-size: 32px !important;
+		}
+		.el-button{
+			font-size: 26px;
+		}
+	}
 </style>

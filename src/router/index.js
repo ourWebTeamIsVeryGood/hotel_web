@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import formVue from '../views/form.vue'
 import selectPay from '../views/selectPay.vue'
+import selectRoom from '../views/selectRoom.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -20,6 +22,11 @@ Vue.use(VueRouter)
     path :"/selectPay",
     name:'selectPay',
     component:selectPay
+  },
+  {
+    path :"/selectRoom",
+    name:'selectRoom',
+    component:selectRoom
   },
 ]
 

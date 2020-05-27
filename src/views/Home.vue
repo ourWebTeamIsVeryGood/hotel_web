@@ -22,6 +22,9 @@
 
 export default {
   name: 'Home',
+  created(){
+	  this.kaishi()
+  },
   methods:{
 		goCheck(){
 			this.$router.push({
