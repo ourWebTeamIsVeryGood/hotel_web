@@ -29,11 +29,20 @@ export default{
 	name:'selectPay',
 	data(){
 		return{
-			dialogVisible:true
+			dialogVisible:true,
+			countDown:this.$countDown
 		}
 	},
 	created(){
-		console.log(this.$route.params)
+		let timer = setInterval(() => {
+			this.countDown--;
+			if(this.countDown<=0){
+				this.$router.push({
+					path:'/'
+				})
+				clearInterval(timer);
+			}
+		}, 1000);
 	}
 }
 </script>

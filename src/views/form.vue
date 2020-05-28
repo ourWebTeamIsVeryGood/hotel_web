@@ -9,7 +9,7 @@
 				<el-input @focus="keyboard('name')" v-model="form.name" placeholder="请输入姓名"></el-input>
 			</el-form-item>
 			<el-form-item prop="number" label="手机号">
-				<el-input @focus="keyboard('number')" type="number" v-model="form.number" placeholder="请输入手机号"></el-input>
+				<el-input @focus="keyboard('number')" v-model="form.number" placeholder="请输入手机号"></el-input>
 			</el-form-item>
 			<el-form-item prop="cardNumber" label="身份证号">
 				<el-input @focus="keyboard('cardNumber')" v-model="form.cardNumber" placeholder="请输入身份证号"></el-input>
@@ -61,6 +61,7 @@ export default {
 	};
     return {
 		labelPosition:"left",
+		countDown:this.$countDown,
 		form: {
 			name: "",
 			number: "",
@@ -88,11 +89,26 @@ export default {
 		}
     };
   },
+  created(){
+	let timer = setInterval(() => {
+		this.countDown--;
+		if(this.countDown<=0){
+			this.$router.push({
+				path:'/'
+			})
+			clearInterval(timer);
+		}
+	}, 1000);
+  },
   methods: {
+	  initCountDown(){
+		  this.countDown=this.$countDown;
+	  },
     handleChange(value) {
-      console.log(value);
+      this.initCountDown();
     },
     onSubmit() {
+		this.initCountDown();
 		let money=1000;
 		this.$refs["form"].validate((valid)=>{
 			if(valid){
@@ -106,6 +122,7 @@ export default {
 		})
 	},
 	updatekey(a){
+		this.initCountDown();
 		if(this.setFormVal){
 			console.log(this.setFormVal);
 			if(this.setFormVal=="name"){
@@ -116,10 +133,12 @@ export default {
 		}
 	},
 	delZn(){
+		this.initCountDown();
 		let name=this.form.name
 		this.form.name = name.length ? name.substring(0, name.length - 1) : name;
 	},
 	keyboard(str){
+		this.initCountDown();
 		if(str=="name"){
 			this.shift=true;
 		}else{

@@ -71,11 +71,16 @@ export default {
           id: 7,
           name: 101
         }
-      ]
+      ],
+      countDown:this.$countDown
     };
   },
   methods: {
+    initCountDown(){
+      this.countDown=this.$countDown;
+    },
     selectRoom() {
+      this.initCountDown();
       this.$confirm("确定选择此房间吗?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
