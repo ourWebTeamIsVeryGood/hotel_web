@@ -6,7 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
-Vue.prototype.$countDown=60;
+Vue.prototype.$countDown=600;
 Vue.prototype.$kaishi= function(){
   var docElm = document.documentElement;  
     //W3C   

@@ -56,19 +56,18 @@ export default {
 		var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
 		if (!reg.test(value)) {
 			return callback(new Error("请输入正确的身份证号"));
-		}else{
-			let str = value.stringObject.slice(0,value.length-1);
-			let arr=str.split("");
-			let arr2="7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2".split(" ");
-			let arr3="1 0 X 9 8 7 6 5 4 3 2".split(" ");
-			var sum=0;
-			for (let index = 0; index < arr.length; index++) {
-				sum+=arr[index]*arr2[index];
-			}
-			let lastStr=arr3[sum%11];
-			if(value[value.length-1].toLocaleUpperCase()!=lastStr.toLowerCase){
-				return callback(new Error("请输入正确的身份证号"));
-			}
+		}
+		let str = value.slice(0,value.length-1);
+		let arr=str.split("");
+		let arr2="7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2".split(" ");
+		let arr3="1 0 X 9 8 7 6 5 4 3 2".split(" ");
+		var sum=0;
+		for (let index = 0; index < arr.length; index++) {
+			sum+=arr[index]*arr2[index];
+		}
+		let lastStr=arr3[sum%11];
+		if(value[value.length-1].toLocaleUpperCase()!=lastStr.toLowerCase()){
+			return callback(new Error("请输入正确的身份证号"));
 		}
 		callback();
 	};
